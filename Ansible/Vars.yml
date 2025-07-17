@@ -26,7 +26,7 @@
 
     - name: Task variable
       ansible.builtin.debug:
-        msg: "{{ URL_CUSTOM }}"  
+        msg: "{{ URL_PLAY }}"  
 
     # Store result of a task, to OUTPUT variable
     - name: demo
