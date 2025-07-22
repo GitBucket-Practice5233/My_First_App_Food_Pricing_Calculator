@@ -20,7 +20,7 @@
     - name: Copy apache2.conf to Apache config directory
       ansible.builtin.copy:
         src: apache2.conf
-        dest: /etc/apache2/apache2.conf
+        dest: /etc/apache2.conf
         owner: root
         group: root
         mode: '0644'
