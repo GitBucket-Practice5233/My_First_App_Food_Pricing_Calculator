@@ -35,6 +35,3 @@
       ansible.builtin.service:
         name: httpd
         state: started
-      when:
-        - ansible_facts['os_family'] == 'RedHat'
-        - "'nginx' not in ansible_facts.services or ansible_facts.services['nginx'].state != 'running'"
