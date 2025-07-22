@@ -1,10 +1,14 @@
 ---
-- name: Install Java
-  ansible.builtin.apt:
-    name: default-jdk
-    state: present
-    update_cache: yes
+- name: java setup
+  hosts: java
+  become: yes
+  tasks:
+    - name: Install Java
+      ansible.builtin.apt:
+        name: default-jdk
+        state: present
+        update_cache: yes
 
-- name: Print Java installation message
-  ansible.builtin.debug:
-    msg: "Java installed on Apache group node {{ inventory_hostname }}"
+    - name: Print Java installation message
+      ansible.builtin.debug:
+        msg: "Java installed on Apache group node {{ inventory_hostname }}"

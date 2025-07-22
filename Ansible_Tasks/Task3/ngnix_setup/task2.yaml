@@ -1,21 +1,26 @@
 ---
-- name: Install Nginx
-  ansible.builtin.dnf:
-    name: nginx
-    state: latest
+- name: nginx setup
+  hosts: nginx
+  become: yes
+  tasks:
 
-- name: Push Nginx HTML file
-  ansible.builtin.copy:
-    src: info.html
-    dest: /var/www/html/index.html
-    mode: '0644'
+    - name: Install Nginx
+      ansible.builtin.dnf:
+        name: nginx
+        state: latest
 
-- name: Ensure Nginx is started and enabled
-  ansible.builtin.service:
-    name: nginx
-    state: started
-    enabled: yes
+    - name: Push Nginx HTML file
+      ansible.builtin.copy:
+        src: info.html
+        dest: /var/www/html/index.html
+        mode: '0644'
 
-- name: Print Nginx installation message
-  ansible.builtin.debug:
-    msg: "Nginx installation completed on {{ inventory_hostname }}"
+    - name: Ensure Nginx is started and enabled
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Print Nginx installation message
+      ansible.builtin.debug:
+        msg: "Nginx installation completed on {{ inventory_hostname }}"
