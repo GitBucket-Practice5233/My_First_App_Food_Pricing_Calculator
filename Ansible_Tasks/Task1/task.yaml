@@ -1,6 +1,6 @@
 ---
 - name: Web server setup on slave nodes
-  hosts: slaves
+  hosts: all
   become: yes
   tasks:
 
