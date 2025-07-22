@@ -24,7 +24,6 @@
         owner: root
         group: root
         mode: '0644'
-        notify: Restart Apache
     
     - name: Restart Apache
       ansible.builtin.service:
