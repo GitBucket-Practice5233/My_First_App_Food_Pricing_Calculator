@@ -27,5 +27,5 @@
     
     - name: Restart Apache
       ansible.builtin.service:
-        name: etc
+        name: httpd
         state: restarted
