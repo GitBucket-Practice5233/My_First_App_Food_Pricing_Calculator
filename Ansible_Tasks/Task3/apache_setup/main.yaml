@@ -1,9 +1,8 @@
 ---
-- name: Install Apache
-  ansible.builtin.apt:
-    name: apache2
-    state: present
-    update_cache: yes
+- name: Install the latest version of Apache
+      ansible.builtin.dnf:
+        name: httpd
+        state: latest
 
 - name: Push Apache HTML file
   ansible.builtin.copy:
@@ -13,7 +12,7 @@
 
 - name: Ensure Apache is started and enabled
   ansible.builtin.service:
-    name: apache2
+    name: httpd
     state: started
     enabled: yes
 
