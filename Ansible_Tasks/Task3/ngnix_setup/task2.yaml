@@ -1,6 +1,6 @@
 ---
 - name: nginx setup
-  hosts: nginx
+  hosts: nginx1
   become: yes
   tasks:
 

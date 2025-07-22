@@ -1,6 +1,6 @@
 ---
 - name: apache setup
-  hosts: apache
+  hosts: apache1
   become: yes
   tasks:
     - name: Install the latest version of Apache
