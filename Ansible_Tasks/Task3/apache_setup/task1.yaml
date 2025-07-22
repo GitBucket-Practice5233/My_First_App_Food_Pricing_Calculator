@@ -1,8 +1,8 @@
 ---
 - name: Install the latest version of Apache
-      ansible.builtin.dnf:
-        name: httpd
-        state: latest
+  ansible.builtin.dnf:
+    name: httpd
+    state: latest
 
 - name: Push Apache HTML file
   ansible.builtin.copy:
