@@ -1,0 +1,41 @@
+---
+- name: Web server setup on slave nodes
+  hosts: slaves
+  become: yes
+  tasks:
+
+    - name: Install nginx
+      ansible.builtin.package:
+        name: nginx
+        state: latest
+
+    - name: Write nginx status to /tmp/sw_status.txt
+      ansible.builtin.copy:
+        content: "nginx installed successfully!!\n"
+        dest: /tmp/sw_status.txt
+
+    - name: Install apache (httpd) on RHEL/CentOS
+      ansible.builtin.package:
+        name: httpd
+        state: present
+      when: ansible_facts['os_family'] == 'RedHat'
+
+    - name: Append apache status to /tmp/sw_status.txt
+      ansible.builtin.lineinfile:
+        path: /tmp/sw_status.txt
+        line: "apache installed successfully!!"
+        create: yes
+        insertafter: EOF
+
+    - name: Stop nginx service
+      ansible.builtin.service:
+        name: nginx
+        state: stopped
+
+    - name: Start httpd on RHEL/CentOS if nginx is stopped
+      ansible.builtin.service:
+        name: httpd
+        state: started
+      when:
+        - ansible_facts['os_family'] == 'RedHat'
+        - "'nginx' not in ansible_facts.services or ansible_facts.services['nginx'].state != 'running'"
