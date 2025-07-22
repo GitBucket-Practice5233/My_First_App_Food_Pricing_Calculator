@@ -19,7 +19,11 @@
         name: apache2
         state: started
         enabled: yes
-
+    - name: Restart Apache
+      ansible.builtin.service:
+        name: httpd
+        state: restarted
+        
     - name: Print Apache installation message
       ansible.builtin.debug:
         msg: "Apache installation completed on {{ inventory_hostname }}"

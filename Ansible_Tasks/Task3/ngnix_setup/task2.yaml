@@ -1,9 +1,3 @@
----
-- name: nginx setup
-  hosts: nginx1
-  become: yes
-  tasks:
-
     - name: Install Nginx
       ansible.builtin.dnf:
         name: nginx
@@ -17,9 +11,14 @@
 
     - name: Ensure Nginx is started and enabled
       ansible.builtin.service:
-        name: nginx
+        name: httpd
         state: started
         enabled: yes
+
+    - name: Restart nginx
+      ansible.builtin.service:
+        name: httpd
+        state: restarted
 
     - name: Print Nginx installation message
       ansible.builtin.debug:
