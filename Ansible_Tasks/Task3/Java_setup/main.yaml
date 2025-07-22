@@ -1,10 +1,10 @@
 ---
 - name: Install Java
-  apt:
+  ansible.builtin.apt:
     name: default-jdk
     state: present
     update_cache: yes
 
 - name: Print Java installation message
-  debug:
+  ansible.builtin.debug:
     msg: "Java installed on Apache group node {{ inventory_hostname }}"

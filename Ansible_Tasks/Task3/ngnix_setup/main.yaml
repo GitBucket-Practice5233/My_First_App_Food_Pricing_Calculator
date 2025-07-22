@@ -1,22 +1,22 @@
 ---
 - name: Install Nginx
-  apt:
+  ansible.builtin.apt:
     name: nginx
     state: present
     update_cache: yes
 
 - name: Push Nginx HTML file
-  copy:
+  ansible.builtin.copy:
     src: info.html
     dest: /var/www/html/index.html
     mode: '0644'
 
 - name: Ensure Nginx is started and enabled
-  service:
+  ansible.builtin.service:
     name: nginx
     state: started
     enabled: yes
 
 - name: Print Nginx installation message
-  debug:
+  ansible.builtin.debug:
     msg: "Nginx installation completed on {{ inventory_hostname }}"
