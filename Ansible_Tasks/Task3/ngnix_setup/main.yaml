@@ -1,9 +1,8 @@
 ---
 - name: Install Nginx
-  ansible.builtin.apt:
-    name: nginx
-    state: present
-    update_cache: yes
+      ansible.builtin.dnf:
+        name: nginx
+        state: latest
 
 - name: Push Nginx HTML file
   ansible.builtin.copy:
@@ -13,7 +12,7 @@
 
 - name: Ensure Nginx is started and enabled
   ansible.builtin.service:
-    name: nginx
+    name: httpd
     state: started
     enabled: yes
 
