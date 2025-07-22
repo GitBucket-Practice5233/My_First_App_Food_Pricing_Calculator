@@ -10,4 +10,4 @@
   hosts: nginx
   become: yes
   roles:
-    - nginx_setup
+    - ngnix_setup
