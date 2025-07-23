@@ -12,7 +12,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_s3_bucket" "example" {
+resource "aws_s3_bucket" "test" {
   bucket = "First-Terraform-Bucket5233ygjjygjfhfcghfcjvgg-hgjhv-jgyj"
 
   tags = {
