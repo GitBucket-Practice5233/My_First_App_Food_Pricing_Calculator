@@ -12,8 +12,8 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_s3_bucket" "task1" {
-  bucket = "First-Terraform-Bucket"
+resource "aws_s3_bucket" "example" {
+  bucket = "First-Terraform-Bucket5233"
 
   tags = {
     Name        = "My bucket"
